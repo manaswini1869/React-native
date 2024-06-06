@@ -1,13 +1,20 @@
 import React from "react";
-import {ActivityIndicator, View, Button } from "react-native";
+import {ActivityIndicator, View, Button, Alert, Dimensions, Text, Platform, ProgressBarAndroidBase } from "react-native";
 export default function App() {
+  const { height, width } = Dimensions.get('window');
+
   const onButtonPress = () => {
-      console.log(`${new Date().toLocaleTimeString()} button press`);
+      Alert.alert(`${new Date().toLocaleTimeString()} button press`);
   }
   return(
     <View style={{padding: 50}}>
       <ActivityIndicator size={"large"} color={"#61DBFB"}></ActivityIndicator>
+      {Platform.OS === "android" && <Text>Hello !</Text>}
+      {Platform.OS === "ios" && <Text>Bye !</Text>}
       <Button title="Click Me" onPress={onButtonPress}></Button>
+      <Text>height: {height}</Text>
+      <Text>width: {width}</Text>
+      <Text>Platform: {Platform.OS}</Text>
     </View>
   );
 }
