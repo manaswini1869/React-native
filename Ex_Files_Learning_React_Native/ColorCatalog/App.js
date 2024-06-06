@@ -1,28 +1,33 @@
-import React from "react";
-import wall from "./assets/wall.jpg"; 
-import wall1 from "./assets/wall1.jpg";
-import {View, StyleSheet, Image, Dimensions } from "react-native";
+import React, {useState} from "react";
+import {View, StyleSheet, Text, Dimensions} from "react-native";
+
 export default function App() {
- 
+  const [backgroundColor, setBackgroundColor] = useState("blue");
   return(
-    <View style={styles.page}>
-      <Image source={wall} style={styles.image}></Image>
-      <Image source={wall1} style={styles.image}></Image>
+    <View style={[styles.container, {backgroundColor}]}>
+      {/* <Image source={wall} style={styles.image}></Image>
+      <Image source={wall1} style={styles.image}></Image> */}
+      <Text style={styles.button} onPress={() => setBackgroundColor("green")}>Green</Text>
+      <Text style={styles.button} onPress={() => setBackgroundColor("red")}>Red</Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  page: {
+  container: {
     flex: 1,
-    alignItems: "center",
+    display: "flex",
     justifyContent: "center",
+    alignItems: "center",
   },
-  image: {
-    flex: 1,
-    borderRadius: 50,
+  button: {
+    width: Dimensions.get("screen").width-20,
+    textAlign: "center",
+    fontSize: 30,
     margin: 10,
-    width: Dimensions.get("window").width - 10,
+    padding: 10,
+    borderWidth: 5,
+    borderRadius: 20,
   },
 })
 
