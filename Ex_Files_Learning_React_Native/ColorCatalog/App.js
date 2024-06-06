@@ -1,35 +1,28 @@
 import React from "react";
-import {View, Alert, Dimensions, Text, StyleSheet } from "react-native";
+import wall from "./assets/wall.jpg"; 
+import wall1 from "./assets/wall1.jpg";
+import {View, StyleSheet, Image, Dimensions } from "react-native";
 export default function App() {
-  const { height, width } = Dimensions.get('window');
-
-  const onButtonPress = () => {
-      Alert.alert(`${new Date().toLocaleTimeString()} button press`);
-  }
+ 
   return(
     <View style={styles.page}>
-      <Text style={styles.text}>Red</Text>
-      <Text style={[styles.text, styles.selectedText]}>Green</Text>
-      <Text style={styles.text}>Blue</Text>
+      <Image source={wall} style={styles.image}></Image>
+      <Image source={wall1} style={styles.image}></Image>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   page: {
-    marginTop: 40, 
-    backgroundColor: "#DDD",
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
   },
-  text: {
-    fontSize: 22,
-    color: "red",
-    backgroundColor: "yellow",
+  image: {
+    flex: 1,
+    borderRadius: 50,
     margin: 10,
-    padding: 5,
-  },
-  selectedText: {
-    backgroundColor: "red",
-    color: "yellow",
+    width: Dimensions.get("window").width - 10,
   },
 })
 
