@@ -1,5 +1,5 @@
 import React from "react";
-import {ActivityIndicator, View, Button, Alert, Dimensions, Text, Platform, ProgressBarAndroidBase } from "react-native";
+import {View, Alert, Dimensions, Text, StyleSheet } from "react-native";
 export default function App() {
   const { height, width } = Dimensions.get('window');
 
@@ -7,17 +7,31 @@ export default function App() {
       Alert.alert(`${new Date().toLocaleTimeString()} button press`);
   }
   return(
-    <View style={{padding: 50}}>
-      <ActivityIndicator size={"large"} color={"#61DBFB"}></ActivityIndicator>
-      {Platform.OS === "android" && <Text>Hello !</Text>}
-      {Platform.OS === "ios" && <Text>Bye !</Text>}
-      <Button title="Click Me" onPress={onButtonPress}></Button>
-      <Text>height: {height}</Text>
-      <Text>width: {width}</Text>
-      <Text>Platform: {Platform.OS}</Text>
+    <View style={styles.page}>
+      <Text style={styles.text}>Red</Text>
+      <Text style={[styles.text, styles.selectedText]}>Green</Text>
+      <Text style={styles.text}>Blue</Text>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  page: {
+    marginTop: 40, 
+    backgroundColor: "#DDD",
+  },
+  text: {
+    fontSize: 22,
+    color: "red",
+    backgroundColor: "yellow",
+    margin: 10,
+    padding: 5,
+  },
+  selectedText: {
+    backgroundColor: "red",
+    color: "yellow",
+  },
+})
 
 // ActiivtyIndicator creates a spinning wheel, loading icon
 // ProgressViewAndoid indicates how much has been loaded and passed on
